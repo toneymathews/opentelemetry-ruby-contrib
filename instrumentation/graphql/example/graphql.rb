@@ -51,3 +51,22 @@ result = Schema.execute('{ episode(episode_id: 5) { id name } }', variables: {},
 puts "episodes are #{result.inspect}"
 
 result
+
+# Example of enabling tracing for specific API requests based on query execution context 
+
+OpenTelemetry::SDK.configure do |c|
+  c.use('OpenTelemetry::Instrumentation::GraphQL' => { 
+    schemas: [Schema],
+    enable_platform_field: true,
+    enable_platform_authorized: true,
+    enable_platform_resolve_type: true,
+  })
+end
+
+query = GraphQL::Query.new(Schema, '{ episode(episode_id: 5) { name } }')
+
+query.context.namespace(:opentelemetry)[:enable_platform_field] = true
+query.context.namespace(:opentelemetry)[:enable_platform_authorized] = true
+query.context.namespace(:opentelemetry)[:enable_platform_resolve_type] = true
+
+query.result

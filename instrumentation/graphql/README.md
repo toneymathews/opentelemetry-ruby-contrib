@@ -53,6 +53,16 @@ OpenTelemetry::SDK.configure do |c|
 end
 ```
 
+Tracing can be enabled per request by setting the following keys to `true` within the GraphQL query execution context. This will add spans that provide more detail.
+
+```ruby
+query = GraphQL::Query.new(MyAppSchema, 'query { foo }')
+
+query.context.namespace(:opentelemetry)[:enable_platform_field] = true
+query.context.namespace(:opentelemetry)[:enable_platform_authorized] = true
+query.context.namespace(:opentelemetry)[:enable_platform_resolve_type] = true
+```
+
 ## Examples
 
 An example of usage can be seen in [`example/graphql.rb`](https://github.com/open-telemetry/opentelemetry-ruby-contrib/blob/main/instrumentation/graphql/example/graphql.rb).
