@@ -27,6 +27,7 @@ jobs:
           - faraday
           - grape
           - graphql
+          - graphql_batch
           - http
           - http_client
           - koala
