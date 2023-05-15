@@ -98,6 +98,11 @@ gems:
     directory: instrumentation/graphql
     version_constant: [OpenTelemetry, Instrumentation, GraphQL, VERSION]
 
+  - name: opentelemetry-instrumentation-graphql_batch
+    directory: instrumentation/net_http
+    version_rb_path: lib/opentelemetry/instrumentation/graphql/batch/version.rb
+    version_constant: [OpenTelemetry, Instrumentation, GraphQL, Batch, VERSION]
+
   - name: opentelemetry-instrumentation-http_client
     directory: instrumentation/http_client
     version_constant: [OpenTelemetry, Instrumentation, HttpClient, VERSION]

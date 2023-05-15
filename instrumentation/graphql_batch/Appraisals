@@ -1,0 +1,9 @@
+# frozen_string_literal: true
+
+# Copyright The OpenTelemetry Authors
+#
+# SPDX-License-Identifier: Apache-2.0
+
+appraise 'graphql-batch-0.5.1' do
+  gem 'graphql-batch', '~> 0.5.1'
+end
